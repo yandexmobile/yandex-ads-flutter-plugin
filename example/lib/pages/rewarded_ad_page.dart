@@ -28,6 +28,7 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
   final networks = NetworkProvider.instance.rewardedNetworks;
 
   late var adUnitId = networks.first.adUnitId;
+  late RewardedAd? _ad;
   var adRequest = const AdRequest();
   var isLoading = false;
 
@@ -55,7 +56,7 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
                 log: log,
                 button: LoadButton(
                   isLoading: isLoading,
-                  onPressed: _showRewardedAd,
+                  onPressed: _onLoadClicked,
                 ),
               ),
             ),
@@ -63,6 +64,12 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
         ),
       ),
     );
+  }
+
+  Future<void> _onLoadClicked() async {
+    _ad = await _createRewardedAd();
+    logMessage('async: created rewarded ad');
+    await _showRewardedAd();
   }
 
   Future<RewardedAd> _createRewardedAd() {
@@ -83,7 +90,10 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
         logMessage('callback: reward: '
             '${reward.amount} of ${reward.type}');
       },
-      onAdDismissed: () => logMessage('callback: rewarded ad dismissed'),
+      onAdDismissed: () {
+        _ad = null;
+        logMessage('callback: rewarded ad dismissed');
+      },
       onLeftApplication: () => logMessage('callback: left app'),
       onReturnedToApplication: () => logMessage('callback: returned to app'),
       onImpression: (data) => logMessage('callback: impression: $data'),
@@ -91,15 +101,16 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
   }
 
   Future<void> _showRewardedAd() async {
-    final ad = await _createRewardedAd();
-    logMessage('async: created rewarded ad');
-    setState(() => isLoading = true);
-    await ad.load(adRequest: adRequest);
-    logMessage('async: loaded rewarded ad');
-    await ad.show();
-    logMessage('async: shown rewarded ad');
-    var reward = await ad.waitForDismiss();
-    logMessage('async: dismissed rewarded ad, '
-        'reward: ${reward?.amount} of ${reward?.type}');
+    final ad = _ad;
+    if (ad != null) {
+      setState(() => isLoading = true);
+      await ad.load(adRequest: adRequest);
+      logMessage('async: loaded rewarded ad');
+      await ad.show();
+      logMessage('async: shown rewarded ad');
+      var reward = await ad.waitForDismiss();
+      logMessage('async: dismissed rewarded ad, '
+          'reward: ${reward?.amount} of ${reward?.type}');
+    }
   }
 }
