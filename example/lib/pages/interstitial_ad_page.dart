@@ -29,6 +29,7 @@ class _InterstitialAdPageState extends State<InterstitialAdPage>
   final networks = NetworkProvider.instance.interstitialNetworks;
 
   late var adUnitId = networks.first.adUnitId;
+  late InterstitialAd? _ad;
   var adRequest = const AdRequest();
   var isLoading = false;
 
@@ -56,7 +57,7 @@ class _InterstitialAdPageState extends State<InterstitialAdPage>
                 log: log,
                 button: LoadButton(
                   isLoading: isLoading,
-                  onPressed: _showInterstitialAd,
+                  onPressed: _onLoadClicked,
                 ),
               ),
             ),
@@ -64,6 +65,12 @@ class _InterstitialAdPageState extends State<InterstitialAdPage>
         ),
       ),
     );
+  }
+
+  Future<void> _onLoadClicked() async {
+    _ad = await _createInterstitialAd();
+    logMessage('async: created interstitial ad');
+    await _showInterstitialAd();
   }
 
   Future<InterstitialAd> _createInterstitialAd() {
@@ -80,7 +87,10 @@ class _InterstitialAdPageState extends State<InterstitialAdPage>
       },
       onAdShown: () => logMessage('callback: interstitial ad shown'),
       onAdClicked: () => logMessage('callback: interstitial ad clicked'),
-      onAdDismissed: () => logMessage('callback: interstitial ad dismissed'),
+      onAdDismissed: () {
+        _ad = null;
+        logMessage('callback: interstitial ad dismissed');
+      },
       onLeftApplication: () => logMessage('callback: left app'),
       onReturnedToApplication: () => logMessage('callback: returned to app'),
       onImpression: (data) => logMessage('callback: impression: $data'),
@@ -88,14 +98,15 @@ class _InterstitialAdPageState extends State<InterstitialAdPage>
   }
 
   Future<void> _showInterstitialAd() async {
-    final ad = await _createInterstitialAd();
-    logMessage('async: created interstitial ad');
-    setState(() => isLoading = true);
-    await ad.load(adRequest: adRequest);
-    logMessage('async: loaded interstitial ad');
-    await ad.show();
-    logMessage('async: shown interstitial ad');
-    await ad.waitForDismiss();
-    logMessage('async: dismissed interstitial ad');
+    final ad = _ad;
+    if (ad != null) {
+      setState(() => isLoading = true);
+      await ad.load(adRequest: adRequest);
+      logMessage('async: loaded interstitial ad');
+      await ad.show();
+      logMessage('async: shown interstitial ad');
+      await ad.waitForDismiss();
+      logMessage('async: dismissed interstitial ad');
+    }
   }
 }
