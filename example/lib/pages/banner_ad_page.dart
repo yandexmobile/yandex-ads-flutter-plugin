@@ -91,9 +91,9 @@ class _BannerAdPageState extends State<BannerAdPage> with TextLogger {
     } else {
       final adSize = widget.isSticky
           ? AdSize.sticky(width: windowSize.width.toInt())
-          : AdSize.flexible(
+          : AdSize.inline(
               width: windowSize.width.toInt(),
-              height: windowSize.height ~/ 3,
+              maxHeight: windowSize.height ~/ 3,
             );
       banner = _createBanner(adSize);
       setState(() {
