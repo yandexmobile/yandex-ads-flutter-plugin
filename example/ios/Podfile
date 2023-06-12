@@ -33,7 +33,7 @@ target 'Runner' do
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
 
-  pod 'YandexMobileAdsMediation', '~> 5.3.1'
+  pod 'YandexMobileAdsMediation', '~> 5.7.0'
 end
 
 post_install do |installer|
