@@ -42,6 +42,6 @@
        <!-- Demo ad unit ID for AdMob mobile mediation -->
        <meta-data
            android:name="com.google.android.gms.ads.APPLICATION_ID"
-           android:value="ca-app-pub-3940256099942544~3347511713"/>
+           android:value="ca-app-pub-4449457472880521~8476795127"/>
     </application>
 </manifest>
