@@ -22,13 +22,21 @@ dependencies:
     sdk: flutter
   url_launcher: ^6.1.6
   shared_preferences: ^2.0.15
-  yandex_mobileads:
-    path: ../
+  yandex_mobileads: ^1.4.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: "ic_launcher"
+  ios: "false"
+  image_path: "assets/icon-1024.png"
+  min_sdk_android: 16
+  adaptive_icon_background: "assets/background-public.png"
+  adaptive_icon_foreground: "assets/foreground.png"
 
 flutter:
   uses-material-design: true
