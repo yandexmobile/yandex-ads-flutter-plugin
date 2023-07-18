@@ -56,5 +56,5 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.yandex.android:mobileads-mediation:5.9.0.0'
+    implementation 'com.yandex.android:mobileads-mediation:5.10.0.0'
 }

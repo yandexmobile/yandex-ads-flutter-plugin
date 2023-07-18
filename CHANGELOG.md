@@ -2,6 +2,11 @@
 
 All notable changes to Yandex Mobile Ads SDK will be documented in this file.
 
+## Version 1.4.0
+
+* Supported Android Yandex Mobile Ads version 5.10.0
+* Supported iOS Yandex Mobile Ads version 5.9.0
+
 ## Version 1.3.0
 
 * Supported Android Yandex Mobile Ads Android version 5.9.0
