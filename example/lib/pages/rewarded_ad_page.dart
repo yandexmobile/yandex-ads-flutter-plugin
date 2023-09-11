@@ -1,7 +1,7 @@
 /*
  * This file is a part of the Yandex Advertising Network
  *
- * Version for Flutter (C) 2022 YANDEX
+ * Version for Flutter (C) 2023 YANDEX
  *
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at https://legal.yandex.com/partner_ch/
@@ -28,8 +28,10 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
   final networks = NetworkProvider.instance.rewardedNetworks;
 
   late var adUnitId = networks.first.adUnitId;
-  late RewardedAd? _ad;
+  RewardedAd? _ad;
+  late final Future<RewardedAdLoader> _adLoader = _createRewardedAdLoader();
   var adRequest = const AdRequest();
+  late var _adRequestConfiguration = AdRequestConfiguration(adUnitId: adUnitId);
   var isLoading = false;
 
   @override
@@ -46,8 +48,10 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
               networks: networks,
               onChanged: (id, request) => setState(() {
                 isLoading = false;
+                _ad = null;
                 adUnitId = id;
                 adRequest = request;
+                _updateAdRequestConfiguration(id, request);
               }),
             ),
             Widgets.verticalSpace,
@@ -56,6 +60,7 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
                 log: log,
                 button: LoadButton(
                   isLoading: isLoading,
+                  adLoaded: _ad != null,
                   onPressed: _onLoadClicked,
                 ),
               ),
@@ -67,50 +72,71 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
   }
 
   Future<void> _onLoadClicked() async {
-    _ad = await _createRewardedAd();
-    logMessage('async: created rewarded ad');
-    await _showRewardedAd();
+    if (_ad != null) {
+      await _showRewardedAd();
+    } else {
+      await _loadRewardedAd();
+    }
   }
 
-  Future<RewardedAd> _createRewardedAd() {
-    return RewardedAd.create(
-      adUnitId: adUnitId,
-      onAdLoaded: () {
-        setState(() => isLoading = false);
+  Future<RewardedAdLoader> _createRewardedAdLoader() {
+    return RewardedAdLoader.create(
+      onAdLoaded: (RewardedAd rewardedAd) {
+        setState(() => {_ad = rewardedAd, isLoading = false});
         logMessage('callback: rewarded ad loaded');
       },
       onAdFailedToLoad: (error) {
-        setState(() => isLoading = false);
+        setState(() => {_ad = null, isLoading = false});
         logMessage('callback: rewarded ad failed to load, '
             'code: ${error.code}, description: ${error.description}');
       },
-      onAdShown: () => logMessage('callback: rewarded ad shown'),
-      onAdClicked: () => logMessage('callback: rewarded ad clicked'),
-      onRewarded: (reward) {
-        logMessage('callback: reward: '
-            '${reward.amount} of ${reward.type}');
-      },
-      onAdDismissed: () {
-        _ad = null;
-        logMessage('callback: rewarded ad dismissed');
-      },
-      onLeftApplication: () => logMessage('callback: left app'),
-      onReturnedToApplication: () => logMessage('callback: returned to app'),
-      onImpression: (data) => logMessage('callback: impression: $data'),
     );
+  }
+
+  Future<void> _loadRewardedAd() async {
+    final adLoader = await _adLoader;
+    setState(() => isLoading = true);
+    await adLoader.loadAd(adRequestConfiguration: _adRequestConfiguration);
+    logMessage('async: load rewarded ad');
   }
 
   Future<void> _showRewardedAd() async {
     final ad = _ad;
     if (ad != null) {
-      setState(() => isLoading = true);
-      await ad.load(adRequest: adRequest);
-      logMessage('async: loaded rewarded ad');
+      _setAdEventListener(ad);
       await ad.show();
       logMessage('async: shown rewarded ad');
       var reward = await ad.waitForDismiss();
       logMessage('async: dismissed rewarded ad, '
           'reward: ${reward?.amount} of ${reward?.type}');
+      setState(() => _ad = null);
     }
+  }
+
+  void _setAdEventListener(RewardedAd ad) {
+    ad.setAdEventListener(
+        eventListener: RewardedAdEventListener(
+            onAdShown: () => logMessage("callback: rewarded ad shown."),
+            onAdFailedToShow: (error) => logMessage(
+                "callback: rewarded ad failed to show: ${error.description}."),
+            onAdDismissed: () => logMessage("callback: rewarded ad dismissed."),
+            onAdClicked: () => logMessage("callback: rewarded ad clicked."),
+            onAdImpression: (data) => logMessage(
+                "callback: rewarded ad impression: ${data.getRawData()}"),
+            onRewarded: (Reward reward) => logMessage(
+                'callback: reward: ${reward.amount} of ${reward.type}')));
+  }
+
+  void _updateAdRequestConfiguration(String adUnitId, AdRequest configuration) {
+    _adRequestConfiguration = AdRequestConfiguration(
+        adUnitId: adUnitId,
+        age: configuration.age,
+        contextQuery: configuration.contextQuery,
+        contextTags: configuration.contextTags,
+        gender: configuration.gender,
+        location: configuration.location,
+        parameters: configuration.parameters,
+        biddingData: configuration.biddingData,
+        preferredTheme: configuration.preferredTheme);
   }
 }

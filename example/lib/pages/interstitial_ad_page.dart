@@ -1,7 +1,7 @@
 /*
  * This file is a part of the Yandex Advertising Network
  *
- * Version for Flutter (C) 2022 YANDEX
+ * Version for Flutter (C) 2023 YANDEX
  *
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at https://legal.yandex.com/partner_ch/
@@ -29,8 +29,11 @@ class _InterstitialAdPageState extends State<InterstitialAdPage>
   final networks = NetworkProvider.instance.interstitialNetworks;
 
   late var adUnitId = networks.first.adUnitId;
-  late InterstitialAd? _ad;
+  InterstitialAd? _ad;
+  late final Future<InterstitialAdLoader> _adLoader =
+      _createInterstitialAdLoader();
   var adRequest = const AdRequest();
+  late var _adRequestConfiguration = AdRequestConfiguration(adUnitId: adUnitId);
   var isLoading = false;
 
   @override
@@ -47,8 +50,10 @@ class _InterstitialAdPageState extends State<InterstitialAdPage>
               networks: networks,
               onChanged: (id, request) => setState(() {
                 isLoading = false;
+                _ad = null;
                 adUnitId = id;
                 adRequest = request;
+                _updateAdRequestConfiguration(id, request);
               }),
             ),
             Widgets.verticalSpace,
@@ -57,6 +62,7 @@ class _InterstitialAdPageState extends State<InterstitialAdPage>
                 log: log,
                 button: LoadButton(
                   isLoading: isLoading,
+                  adLoaded: _ad != null,
                   onPressed: _onLoadClicked,
                 ),
               ),
@@ -68,45 +74,73 @@ class _InterstitialAdPageState extends State<InterstitialAdPage>
   }
 
   Future<void> _onLoadClicked() async {
-    _ad = await _createInterstitialAd();
-    logMessage('async: created interstitial ad');
-    await _showInterstitialAd();
+    if (_ad != null) {
+      await _showInterstitialAd();
+    } else {
+      await _loadInterstitialAd();
+    }
   }
 
-  Future<InterstitialAd> _createInterstitialAd() {
-    return InterstitialAd.create(
-      adUnitId: adUnitId,
-      onAdLoaded: () {
-        setState(() => isLoading = false);
-        logMessage('callback: interstitial ad loaded');
-      },
-      onAdFailedToLoad: (error) {
-        setState(() => isLoading = false);
-        logMessage('callback: interstitial ad failed to load, '
-            'code: ${error.code}, description: ${error.description}');
-      },
-      onAdShown: () => logMessage('callback: interstitial ad shown'),
-      onAdClicked: () => logMessage('callback: interstitial ad clicked'),
-      onAdDismissed: () {
-        _ad = null;
-        logMessage('callback: interstitial ad dismissed');
-      },
-      onLeftApplication: () => logMessage('callback: left app'),
-      onReturnedToApplication: () => logMessage('callback: returned to app'),
-      onImpression: (data) => logMessage('callback: impression: $data'),
-    );
+  Future<void> _loadInterstitialAd() async {
+    final adLoader = await _adLoader;
+    setState(() => isLoading = true);
+    await adLoader.loadAd(adRequestConfiguration: _adRequestConfiguration);
+    logMessage('async: load interstitial ad');
   }
 
   Future<void> _showInterstitialAd() async {
     final ad = _ad;
     if (ad != null) {
-      setState(() => isLoading = true);
-      await ad.load(adRequest: adRequest);
-      logMessage('async: loaded interstitial ad');
+      _setAdEventListener(ad);
       await ad.show();
       logMessage('async: shown interstitial ad');
       await ad.waitForDismiss();
       logMessage('async: dismissed interstitial ad');
+      setState(() => _ad = null);
     }
+  }
+
+  void _setAdEventListener(InterstitialAd ad) {
+    ad.setAdEventListener(
+        eventListener: InterstitialAdEventListener(
+      onAdShown: () => logMessage('callback: interstitial ad shown'),
+      onAdFailedToShow: (error) {
+        logMessage(
+            'callback: interstitial ad failed to load, description: ${error.description}');
+      },
+      onAdClicked: () => logMessage('callback: interstitial ad clicked'),
+      onAdDismissed: () {
+        logMessage('callback: interstitial ad dismissed');
+      },
+      onAdImpression: (data) =>
+          logMessage('callback: impression: ${data.getRawData()}'),
+    ));
+  }
+
+  Future<InterstitialAdLoader> _createInterstitialAdLoader() {
+    return InterstitialAdLoader.create(
+      onAdLoaded: (InterstitialAd interstitialAd) {
+        setState(() => {_ad = interstitialAd, isLoading = false});
+        logMessage('callback: interstitial ad loaded');
+      },
+      onAdFailedToLoad: (error) {
+        setState(() => {_ad = null, isLoading = false});
+        logMessage('callback: interstitial ad failed to load, '
+            'code: ${error.code}, description: ${error.description}');
+      },
+    );
+  }
+
+  void _updateAdRequestConfiguration(String adUnitId, AdRequest configuration) {
+    _adRequestConfiguration = AdRequestConfiguration(
+        adUnitId: adUnitId,
+        age: configuration.age,
+        contextQuery: configuration.contextQuery,
+        contextTags: configuration.contextTags,
+        gender: configuration.gender,
+        location: configuration.location,
+        parameters: configuration.parameters,
+        biddingData: configuration.biddingData,
+        preferredTheme: configuration.preferredTheme);
   }
 }

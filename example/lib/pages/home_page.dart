@@ -1,7 +1,7 @@
 /*
  * This file is a part of the Yandex Advertising Network
  *
- * Version for Flutter (C) 2022 YANDEX
+ * Version for Flutter (C) 2023  YANDEX
  *
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at https://legal.yandex.com/partner_ch/
@@ -25,6 +25,12 @@ class HomePage extends StatelessWidget {
       body: ListView(
         children: [
           ListTile(
+            leading: const Icon(Icons.fullscreen_outlined),
+            title: const Text('App open ad'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.pushNamed(context, '/app_open'),
+          ),
+          ListTile(
             leading: const Icon(Icons.ad_units_outlined),
             title: const Text('Sticky banner'),
             trailing: const Icon(Icons.chevron_right),
@@ -32,9 +38,9 @@ class HomePage extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.aspect_ratio_outlined),
-            title: const Text('Flex banner'),
+            title: const Text('Inline banner'),
             trailing: const Icon(Icons.chevron_right),
-            onTap: () => Navigator.pushNamed(context, '/banner_flex'),
+            onTap: () => Navigator.pushNamed(context, '/banner_inline'),
           ),
           ListTile(
             leading: const Icon(Icons.fullscreen_outlined),
@@ -65,9 +71,7 @@ class HomePage extends StatelessWidget {
     final isWarningShown = prefs.getBool(key) ?? false;
     if (!isWarningShown && context.mounted) {
       await showDialog(
-          context: context,
-          builder: (context) => const NetworkWarningDialog()
-      );
+          context: context, builder: (context) => const NetworkWarningDialog());
     }
     prefs.setBool(key, true);
   }
