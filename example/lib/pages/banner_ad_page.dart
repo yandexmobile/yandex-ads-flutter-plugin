@@ -1,7 +1,7 @@
 /*
  * This file is a part of the Yandex Advertising Network
  *
- * Version for Flutter (C) 2022 YANDEX
+ * Version for Flutter (C) 2023  YANDEX
  *
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at https://legal.yandex.com/partner_ch/
@@ -87,11 +87,11 @@ class _BannerAdPageState extends State<BannerAdPage> with TextLogger {
     final windowSize = MediaQuery.of(context).size;
     setState(() => isLoading = true);
     if (isBannerAlreadyCreated) {
-      banner.load(adRequest: adRequest);
+      banner.loadAd(adRequest: adRequest);
     } else {
       final adSize = widget.isSticky
-          ? AdSize.sticky(width: windowSize.width.toInt())
-          : AdSize.inline(
+          ? BannerAdSize.sticky(width: windowSize.width.toInt())
+          : BannerAdSize.inline(
               width: windowSize.width.toInt(),
               maxHeight: windowSize.height ~/ 3,
             );
@@ -102,7 +102,7 @@ class _BannerAdPageState extends State<BannerAdPage> with TextLogger {
     }
   }
 
-  BannerAd _createBanner(AdSize adSize) {
+  BannerAd _createBanner(BannerAdSize adSize) {
     return BannerAd(
       adUnitId: adUnitId,
       adSize: adSize,
@@ -121,7 +121,8 @@ class _BannerAdPageState extends State<BannerAdPage> with TextLogger {
       onAdClicked: () => logMessage('callback: banner ad clicked'),
       onLeftApplication: () => logMessage('callback: left app'),
       onReturnedToApplication: () => logMessage('callback: returned to app'),
-      onImpression: (data) => logMessage('callback: impression: $data'),
+      onImpression: (data) =>
+          logMessage('callback: impression: ${data.getRawData()}'),
     );
   }
 }

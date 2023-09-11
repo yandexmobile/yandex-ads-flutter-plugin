@@ -1,15 +1,15 @@
 #
 # This file is a part of the Yandex Advertising Network
 #
-# Version for Flutter (C) 2022 YANDEX
+# Version for Flutter (C) 2023 YANDEX
 #
 # You may not use this file except in compliance with the License.
 # You may obtain a copy of the License at https://legal.yandex.com/partner_ch/
 #
 
 name: yandex_mobileads_sample
-description: A Flutter application demonstrating the Yandex Mobile Ads SDK. The demonstration is conducted with banner (sticky and flex), interstitial and rewarded advertising.
-version: 1.1.0+1
+description: A Flutter application demonstrating the Yandex Mobile Ads SDK. The demonstration is conducted with banner (sticky and inline), interstitial and rewarded advertising.
+version: 6.0.0
 homepage: https://tech.yandex.ru/mobile-ads/
 
 publish_to: 'none'
@@ -22,7 +22,7 @@ dependencies:
     sdk: flutter
   url_launcher: ^6.1.6
   shared_preferences: ^2.0.15
-  yandex_mobileads: ^1.4.0
+  yandex_mobileads: ^6.0.0
 
 dev_dependencies:
   flutter_test:

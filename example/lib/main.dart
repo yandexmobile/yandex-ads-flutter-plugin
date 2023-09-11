@@ -1,13 +1,14 @@
 /*
  * This file is a part of the Yandex Advertising Network
  *
- * Version for Flutter (C) 2022 YANDEX
+ * Version for Flutter (C) 2023 YANDEX
  *
  * You may not use this file except in compliance with the License.
  * You may obtain a copy of the License at https://legal.yandex.com/partner_ch/
  */
 
 import 'package:flutter/material.dart';
+import 'package:yandex_mobileads_sample/pages/app_open_ad_page.dart';
 import 'package:yandex_mobileads_sample/policies/policies_page.dart';
 
 import 'pages/banner_ad_page.dart';
@@ -47,15 +48,16 @@ class YandexMobileAdsApp extends StatelessWidget {
       ),
       routes: {
         '/': (context) => const HomePage(),
+        '/app_open': (context) => const AppOpenAdPage(),
         '/banner_sticky': (context) {
           return const BannerAdPage(
             title: 'Sticky banner ad',
             isSticky: true,
           );
         },
-        '/banner_flex': (context) {
+        '/banner_inline': (context) {
           return const BannerAdPage(
-            title: 'Flexible banner ad',
+            title: 'Inline banner ad',
           );
         },
         '/interstitial': (context) => const InterstitialAdPage(),

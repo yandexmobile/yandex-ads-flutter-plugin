@@ -11,4 +11,4 @@ package com.yandex.mobile.ads.flutter.sample
 
 import io.flutter.embedding.android.FlutterActivity
 
-class MainActivity: FlutterActivity()
+class MainActivity : FlutterActivity()

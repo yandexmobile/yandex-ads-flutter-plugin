@@ -35,6 +35,7 @@ class _AndroidNetworkProvider extends NetworkProvider {
     Network(title: 'MyTarget', adUnitId: 'demo-banner-mytarget'),
     Network(title: 'StartApp', adUnitId: 'demo-banner-startapp'),
     Network(title: 'Vungle', adUnitId: 'demo-banner-vungle'),
+    Network(title: 'InMobi', adUnitId: 'demo-banner-inmobi'),
     Network(
       title: 'AdFox',
       adUnitId: 'R-M-243655-8',
@@ -63,6 +64,7 @@ class _AndroidNetworkProvider extends NetworkProvider {
     Network(title: 'Tapjoy', adUnitId: 'demo-interstitial-tapjoy'),
     Network(title: 'Unity Ads', adUnitId: 'demo-interstitial-unityads'),
     Network(title: 'Vungle', adUnitId: 'demo-interstitial-vungle'),
+    Network(title: 'InMobi', adUnitId: 'demo-interstitial-inmobi'),
     Network(
       title: 'AdFox',
       adUnitId: 'R-M-243655-9',
@@ -91,6 +93,7 @@ class _AndroidNetworkProvider extends NetworkProvider {
     Network(title: 'Tapjoy', adUnitId: 'demo-rewarded-tapjoy'),
     Network(title: 'Unity Ads', adUnitId: 'demo-rewarded-unityads'),
     Network(title: 'Vungle', adUnitId: 'demo-rewarded-vungle'),
+    Network(title: 'InMobi', adUnitId: 'demo-rewarded-inmobi'),
   ];
 }
 
@@ -101,6 +104,7 @@ class _IosNetworkProvider extends NetworkProvider {
     Network(title: 'AdMob', adUnitId: 'demo-banner-admob'),
     Network(title: 'Mintegral', adUnitId: 'demo-banner-mintegral'),
     Network(title: 'MyTarget', adUnitId: 'demo-banner-mytarget'),
+    Network(title: 'InMobi', adUnitId: 'demo-banner-inmobi'),
     Network(
       title: 'AdFox',
       adUnitId: 'R-M-243655-8',
@@ -121,6 +125,7 @@ class _IosNetworkProvider extends NetworkProvider {
     Network(title: 'AppLovin', adUnitId: 'demo-interstitial-applovin'),
     Network(title: 'Mintegral', adUnitId: 'demo-interstitial-mintegral'),
     Network(title: 'MyTarget', adUnitId: 'demo-interstitial-mytarget'),
+    Network(title: 'InMobi', adUnitId: 'demo-interstitial-inmobi'),
     Network(title: 'IronSource', adUnitId: 'demo-interstitial-ironsource'),
     Network(title: 'Unity Ads', adUnitId: 'demo-interstitial-unityads'),
     Network(
@@ -143,6 +148,7 @@ class _IosNetworkProvider extends NetworkProvider {
     Network(title: 'AppLovin', adUnitId: 'demo-rewarded-applovin'),
     Network(title: 'Mintegral', adUnitId: 'demo-rewarded-mintegral'),
     Network(title: 'MyTarget', adUnitId: 'demo-rewarded-mytarget'),
+    Network(title: 'InMobi', adUnitId: 'demo-rewarded-inmobi'),
     Network(title: 'IronSource', adUnitId: 'demo-rewarded-ironsource'),
     Network(title: 'Unity Ads', adUnitId: 'demo-rewarded-unityads'),
   ];
