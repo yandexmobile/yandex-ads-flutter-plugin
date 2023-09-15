@@ -24,7 +24,7 @@ EULA is available at the [EULA website] [LICENSE]
 
 ```yaml
 dependencies:
-  yandex_mobileads: ^6.0.0
+  yandex_mobileads: ^6.0.1
 ```
 
 ### Mediation
@@ -40,7 +40,7 @@ You can use common mediation dependency including all adapters (recommended):
 ```groovy
 dependencies {
     // ...
-    implementation 'com.yandex.android:mobileads-mediation:6.0.0.0'
+    implementation 'com.yandex.android:mobileads-mediation:6.0.1.0'
 }
 ```
 
@@ -49,7 +49,7 @@ Or you can choose adapters manually and include only their dependencies:
 ```groovy
 dependencies {
     // ...
-    implementation 'com.yandex.android:mobileads:6.0.0'
+    implementation 'com.yandex.android:mobileads:6.0.1'
     implementation 'com.yandex.ads.mediation:mobileads-google:22.2.0.0'
     implementation 'com.yandex.ads.mediation:mobileads-inmobi: 10.5.5.0'
     implementation 'com.yandex.ads.mediation:mobileads-mytarget:5.18.0.0'
