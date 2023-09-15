@@ -1,5 +1,11 @@
 # Change Log
 
+## 6.0.1
+
+#### Updated
+
+* Supported Android Yandex Mobile Ads version 6.0.1
+
 ## 6.0.0
 
 #### Updated
