@@ -121,8 +121,8 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
                 "callback: rewarded ad failed to show: ${error.description}."),
             onAdDismissed: () => logMessage("callback: rewarded ad dismissed."),
             onAdClicked: () => logMessage("callback: rewarded ad clicked."),
-            onAdImpression: (data) => logMessage(
-                "callback: rewarded ad impression: ${data.getRawData()}"),
+            onAdImpression: (data) =>
+                logMessage("callback: rewarded ad impression: ${data.getRawData()}"),
             onRewarded: (Reward reward) => logMessage(
                 'callback: reward: ${reward.amount} of ${reward.type}')));
   }
@@ -136,7 +136,6 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
         gender: configuration.gender,
         location: configuration.location,
         parameters: configuration.parameters,
-        biddingData: configuration.biddingData,
         preferredTheme: configuration.preferredTheme);
   }
 }

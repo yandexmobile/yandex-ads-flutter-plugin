@@ -17,8 +17,8 @@ class AppOpenAdPage extends StatefulWidget with WidgetsBindingObserver {
   State<AppOpenAdPage> createState() => _AppOpenAdPageState();
 }
 
-class _AppOpenAdPageState extends State<AppOpenAdPage>
-    with WidgetsBindingObserver {
+class _AppOpenAdPageState extends State<AppOpenAdPage> with WidgetsBindingObserver {
+
   final _appOpenAdManager = AppOpenAdManager()..loadAppOpenAd();
 
   @override

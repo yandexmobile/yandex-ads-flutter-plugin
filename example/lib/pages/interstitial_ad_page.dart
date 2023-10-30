@@ -112,8 +112,7 @@ class _InterstitialAdPageState extends State<InterstitialAdPage>
       onAdDismissed: () {
         logMessage('callback: interstitial ad dismissed');
       },
-      onAdImpression: (data) =>
-          logMessage('callback: impression: ${data.getRawData()}'),
+      onAdImpression: (data) => logMessage('callback: impression: ${data.getRawData()}'),
     ));
   }
 
@@ -140,7 +139,6 @@ class _InterstitialAdPageState extends State<InterstitialAdPage>
         gender: configuration.gender,
         location: configuration.location,
         parameters: configuration.parameters,
-        biddingData: configuration.biddingData,
         preferredTheme: configuration.preferredTheme);
   }
 }

@@ -95,6 +95,8 @@ class _BannerAdPageState extends State<BannerAdPage> with TextLogger {
               width: windowSize.width.toInt(),
               maxHeight: windowSize.height ~/ 3,
             );
+      var calculatedBannerSize = await adSize.getCalculatedBannerAdSize();
+      logMessage('calculatedBannerSize: ${calculatedBannerSize.toString()}');
       banner = _createBanner(adSize);
       setState(() {
         isBannerAlreadyCreated = true;
@@ -121,8 +123,7 @@ class _BannerAdPageState extends State<BannerAdPage> with TextLogger {
       onAdClicked: () => logMessage('callback: banner ad clicked'),
       onLeftApplication: () => logMessage('callback: left app'),
       onReturnedToApplication: () => logMessage('callback: returned to app'),
-      onImpression: (data) =>
-          logMessage('callback: impression: ${data.getRawData()}'),
+      onImpression: (data) => logMessage('callback: impression: ${data.getRawData()}'),
     );
   }
 }
