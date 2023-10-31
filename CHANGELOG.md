@@ -1,5 +1,16 @@
 # Change Log
 
+## 6.1.0
+
+#### Added
+
+* Ability to get calculated banner size before ads loading
+
+#### Updated
+
+* Supported Android Yandex Mobile Ads version 6.1.0
+* Supported iOS Yandex Mobile Ads version 6.1.0
+
 ## 6.0.1
 
 #### Updated

@@ -9,7 +9,7 @@
 
 name: yandex_mobileads_sample
 description: A Flutter application demonstrating the Yandex Mobile Ads SDK. The demonstration is conducted with banner (sticky and inline), interstitial and rewarded advertising.
-version: 6.0.1
+version: 6.1.0
 homepage: https://tech.yandex.ru/mobile-ads/
 
 publish_to: 'none'
@@ -22,7 +22,7 @@ dependencies:
     sdk: flutter
   url_launcher: ^6.1.6
   shared_preferences: ^2.0.15
-  yandex_mobileads: ^6.0.1
+  yandex_mobileads: ^6.1.0
 
 dev_dependencies:
   flutter_test:

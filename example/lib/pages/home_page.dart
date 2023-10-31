@@ -71,7 +71,9 @@ class HomePage extends StatelessWidget {
     final isWarningShown = prefs.getBool(key) ?? false;
     if (!isWarningShown && context.mounted) {
       await showDialog(
-          context: context, builder: (context) => const NetworkWarningDialog());
+          context: context,
+          builder: (context) => const NetworkWarningDialog()
+      );
     }
     prefs.setBool(key, true);
   }
