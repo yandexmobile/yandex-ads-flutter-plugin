@@ -17,10 +17,10 @@ class AdInfoField extends StatefulWidget {
   final void Function(String adUnitId, AdRequest adRequest)? onChanged;
 
   const AdInfoField({
-    Key? key,
+    super.key,
     required this.networks,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   State<AdInfoField> createState() => _AdInfoFieldState();

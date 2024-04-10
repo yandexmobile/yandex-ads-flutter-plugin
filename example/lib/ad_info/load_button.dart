@@ -15,8 +15,7 @@ class LoadButton extends StatelessWidget {
   final void Function()? onPressed;
 
   const LoadButton(
-      {Key? key, required this.isLoading, this.adLoaded, this.onPressed})
-      : super(key: key);
+      {super.key, required this.isLoading, this.adLoaded, this.onPressed});
 
   @override
   Widget build(BuildContext context) {

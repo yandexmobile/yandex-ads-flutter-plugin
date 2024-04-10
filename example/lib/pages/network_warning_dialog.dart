@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NetworkWarningDialog extends StatelessWidget {
-  const NetworkWarningDialog({Key? key}) : super(key: key);
+  const NetworkWarningDialog({super.key});
 
   @override
   Widget build(BuildContext context) {

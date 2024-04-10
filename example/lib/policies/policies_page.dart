@@ -6,7 +6,7 @@ import 'gdpr_dialog.dart';
 import 'location_dialog.dart';
 
 class PoliciesPage extends StatefulWidget {
-  const PoliciesPage({Key? key}) : super(key: key);
+  const PoliciesPage({super.key});
 
   @override
   State<PoliciesPage> createState() => _PoliciesPageState();

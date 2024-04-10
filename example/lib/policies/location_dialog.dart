@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LocationDialog extends StatelessWidget {
-  const LocationDialog({Key? key}) : super(key: key);
+  const LocationDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
