@@ -14,10 +14,10 @@ class LogTile extends StatelessWidget {
   final Widget button;
 
   const LogTile({
-    Key? key,
+    super.key,
     required this.log,
     required this.button,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

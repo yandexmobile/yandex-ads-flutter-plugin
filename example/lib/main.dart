@@ -27,7 +27,7 @@ class YandexMobileAdsApp extends StatelessWidget {
     horizontalTitleGap: 12.0,
   );
 
-  const YandexMobileAdsApp({Key? key}) : super(key: key);
+  const YandexMobileAdsApp({super.key});
 
   @override
   Widget build(BuildContext context) {

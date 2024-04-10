@@ -1,5 +1,16 @@
 # Change Log
 
+## 7.0.0
+
+#### Added
+
+* Debug Panel for Android
+
+#### Updated
+
+* Supported Android Yandex Mobile Ads version 7.0.0
+* Supported iOS Yandex Mobile Ads version 7.0.0
+
 ## 6.3.0
 
 * Supported Android Yandex Mobile Ads version 6.4.0

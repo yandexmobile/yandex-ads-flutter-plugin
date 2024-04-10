@@ -18,7 +18,7 @@ import '../logging/log_tile.dart';
 import '../logging/text_logger.dart';
 
 class InterstitialAdPage extends StatefulWidget {
-  const InterstitialAdPage({Key? key}) : super(key: key);
+  const InterstitialAdPage({super.key});
 
   @override
   State<InterstitialAdPage> createState() => _InterstitialAdPageState();
@@ -112,18 +112,25 @@ class _InterstitialAdPageState extends State<InterstitialAdPage>
       onAdDismissed: () {
         logMessage('callback: interstitial ad dismissed');
       },
-      onAdImpression: (data) => logMessage('callback: impression: ${data.getRawData()}'),
+      onAdImpression: (data) =>
+          logMessage('callback: impression: ${data.getRawData()}'),
     ));
   }
 
   Future<InterstitialAdLoader> _createInterstitialAdLoader() {
     return InterstitialAdLoader.create(
       onAdLoaded: (InterstitialAd interstitialAd) {
-        setState(() => {_ad = interstitialAd, isLoading = false});
+        setState(() {
+          _ad = interstitialAd;
+          isLoading = false;
+        });
         logMessage('callback: interstitial ad loaded');
       },
       onAdFailedToLoad: (error) {
-        setState(() => {_ad = null, isLoading = false});
+        setState(() {
+          _ad = null;
+          isLoading = false;
+        });
         logMessage('callback: interstitial ad failed to load, '
             'code: ${error.code}, description: ${error.description}');
       },

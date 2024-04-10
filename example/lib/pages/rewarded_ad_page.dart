@@ -18,7 +18,7 @@ import '../logging/log_tile.dart';
 import '../logging/text_logger.dart';
 
 class RewardedAdPage extends StatefulWidget {
-  const RewardedAdPage({Key? key}) : super(key: key);
+  const RewardedAdPage({super.key});
 
   @override
   State<RewardedAdPage> createState() => _RewardedAdPageState();
@@ -82,11 +82,17 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
   Future<RewardedAdLoader> _createRewardedAdLoader() {
     return RewardedAdLoader.create(
       onAdLoaded: (RewardedAd rewardedAd) {
-        setState(() => {_ad = rewardedAd, isLoading = false});
+        setState(() {
+          _ad = rewardedAd;
+          isLoading = false;
+        });
         logMessage('callback: rewarded ad loaded');
       },
       onAdFailedToLoad: (error) {
-        setState(() => {_ad = null, isLoading = false});
+        setState(() {
+          _ad = null;
+          isLoading = false;
+        });
         logMessage('callback: rewarded ad failed to load, '
             'code: ${error.code}, description: ${error.description}');
       },
@@ -121,8 +127,8 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
                 "callback: rewarded ad failed to show: ${error.description}."),
             onAdDismissed: () => logMessage("callback: rewarded ad dismissed."),
             onAdClicked: () => logMessage("callback: rewarded ad clicked."),
-            onAdImpression: (data) =>
-                logMessage("callback: rewarded ad impression: ${data.getRawData()}"),
+            onAdImpression: (data) => logMessage(
+                "callback: rewarded ad impression: ${data.getRawData()}"),
             onRewarded: (Reward reward) => logMessage(
                 'callback: reward: ${reward.amount} of ${reward.type}')));
   }

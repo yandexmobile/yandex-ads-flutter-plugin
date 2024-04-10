@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yandex_mobileads_sample/constants.dart';
 
 class CoppaDialog extends StatefulWidget {
-  const CoppaDialog({Key? key}) : super(key: key);
+  const CoppaDialog({super.key});
 
   @override
   State<CoppaDialog> createState() => _CoppaDialogState();

@@ -7,13 +7,16 @@
  * You may obtain a copy of the License at https://legal.yandex.com/partner_ch/
  */
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:yandex_mobileads/mobile_ads.dart';
 
 import 'network_warning_dialog.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +63,14 @@ class HomePage extends StatelessWidget {
             trailing: const Icon(Icons.chevron_right),
             onTap: () => Navigator.pushNamed(context, '/policies'),
           ),
+          Visibility(
+              visible: Platform.isAndroid,
+              child: ListTile(
+                leading: const Icon(Icons.home_repair_service_outlined),
+                title: const Text('Debug Panel'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => MobileAds.showDebugPanel(),
+              ))
         ],
       ),
     );
@@ -71,9 +82,7 @@ class HomePage extends StatelessWidget {
     final isWarningShown = prefs.getBool(key) ?? false;
     if (!isWarningShown && context.mounted) {
       await showDialog(
-          context: context,
-          builder: (context) => const NetworkWarningDialog()
-      );
+          context: context, builder: (context) => const NetworkWarningDialog());
     }
     prefs.setBool(key, true);
   }

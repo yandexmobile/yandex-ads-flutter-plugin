@@ -22,10 +22,10 @@ class BannerAdPage extends StatefulWidget {
   final bool isSticky;
 
   const BannerAdPage({
-    Key? key,
+    super.key,
     required this.title,
     this.isSticky = false,
-  }) : super(key: key);
+  });
 
   @override
   State<BannerAdPage> createState() => _BannerAdPageState();
@@ -123,7 +123,8 @@ class _BannerAdPageState extends State<BannerAdPage> with TextLogger {
       onAdClicked: () => logMessage('callback: banner ad clicked'),
       onLeftApplication: () => logMessage('callback: left app'),
       onReturnedToApplication: () => logMessage('callback: returned to app'),
-      onImpression: (data) => logMessage('callback: impression: ${data.getRawData()}'),
+      onImpression: (data) =>
+          logMessage('callback: impression: ${data.getRawData()}'),
     );
   }
 }

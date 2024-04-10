@@ -11,14 +11,14 @@ import 'package:flutter/material.dart';
 import 'package:yandex_mobileads_sample/pages/app_open_ad_manager.dart';
 
 class AppOpenAdPage extends StatefulWidget with WidgetsBindingObserver {
-  const AppOpenAdPage({Key? key}) : super(key: key);
+  const AppOpenAdPage({super.key});
 
   @override
   State<AppOpenAdPage> createState() => _AppOpenAdPageState();
 }
 
-class _AppOpenAdPageState extends State<AppOpenAdPage> with WidgetsBindingObserver {
-
+class _AppOpenAdPageState extends State<AppOpenAdPage>
+    with WidgetsBindingObserver {
   final _appOpenAdManager = AppOpenAdManager()..loadAppOpenAd();
 
   @override
