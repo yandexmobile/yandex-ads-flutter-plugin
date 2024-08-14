@@ -19,6 +19,8 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    namespace = "com.yandex.mobile.ads.flutter.sample"
+
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
@@ -56,5 +58,5 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.yandex.android:mobileads-mediation:7.1.0.0'
+    implementation 'com.yandex.android:mobileads-mediation:7.3.0.0'
 }
