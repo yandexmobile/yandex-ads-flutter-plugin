@@ -22,7 +22,7 @@ dependencies:
     sdk: flutter
   url_launcher: ^6.1.6
   shared_preferences: ^2.0.15
-  yandex_mobileads: ^7.2.0
+  yandex_mobileads: ^7.3.0
 
 dev_dependencies:
   flutter_test:
