@@ -7,8 +7,6 @@
  * You may obtain a copy of the License at https://legal.yandex.com/partner_ch/
  */
 
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yandex_mobileads/mobile_ads.dart';
@@ -63,14 +61,12 @@ class HomePage extends StatelessWidget {
             trailing: const Icon(Icons.chevron_right),
             onTap: () => Navigator.pushNamed(context, '/policies'),
           ),
-          Visibility(
-              visible: Platform.isAndroid,
-              child: ListTile(
-                leading: const Icon(Icons.home_repair_service_outlined),
-                title: const Text('Debug Panel'),
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () => MobileAds.showDebugPanel(),
-              ))
+          ListTile(
+            leading: const Icon(Icons.home_repair_service_outlined),
+            title: const Text('Debug Panel'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => MobileAds.showDebugPanel(),
+          )
         ],
       ),
     );

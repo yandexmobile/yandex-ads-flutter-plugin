@@ -21,7 +21,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 android {
     namespace = "com.yandex.mobile.ads.flutter.sample"
 
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -58,5 +58,5 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.yandex.android:mobileads-mediation:7.5.0.0'
+    implementation 'com.yandex.android:mobileads-mediation:7.6.0.0'
 }
