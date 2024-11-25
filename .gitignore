@@ -12,7 +12,7 @@ migrate_working_dir/
 
 # Flutter/Dart/Pub related
 .dart_tool/
-.fvm/flutter_sdk
+.fvm/
 pubspec.lock
 **/doc/API/
 .flutter-plugins
@@ -28,7 +28,6 @@ pubspec.lock
 .idea/
 
 # Android-generated code
-**/android/**/gradle-wrapper.jar
 .gradle/
 **/android/captures/
 **/android/gradlew.bat
@@ -39,6 +38,7 @@ pubspec.lock
 /android/app/debug
 /android/app/profile
 /android/app/release
+**/local.properties
 
 # IOS-generated code
 **/ios/Flutter/.last_build_id
@@ -59,3 +59,6 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+### Kotlin ###
+.kotlin
