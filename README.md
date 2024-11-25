@@ -24,7 +24,7 @@ EULA is available at the [EULA website] [LICENSE]
 
 ```yaml
 dependencies:
-  yandex_mobileads: ^7.5.0
+  yandex_mobileads: ^7.6.0
 ```
 
 ### Mediation
@@ -40,7 +40,7 @@ You can use common mediation dependency including all adapters (recommended):
 ```groovy
 dependencies {
     // ...
-    implementation 'com.yandex.android:mobileads-mediation:7.6.0.0'
+    implementation 'com.yandex.android:mobileads-mediation:7.7.0.0'
 }
 ```
 
@@ -49,7 +49,7 @@ Or you can choose adapters manually and include only their dependencies:
 ```groovy
 dependencies {
     // ...
-    implementation 'com.yandex.android:mobileads:7.6.0'
+    implementation 'com.yandex.android:mobileads:7.7.0'
     implementation 'com.yandex.ads.mediation:mobileads-google:23.4.0.0'
     implementation 'com.yandex.ads.mediation:mobileads-inmobi:10.7.8.0'
     implementation 'com.yandex.ads.mediation:mobileads-mytarget:5.22.1.2'
@@ -110,13 +110,13 @@ You can use common mediation dependency including all adapters (recommended):
 `ios/Podfile`:
 
 ```ruby
-pod 'YandexMobileAdsMediation', '~> 7.6.0'
+pod 'YandexMobileAdsMediation', '~> 7.7.0'
 ```
 
 Or you can choose adapters manually and include only their dependencies:
 
 ```ruby
-pod 'YandexMobileAds', '~> 7.6.0'
+pod 'YandexMobileAds', '~> 7.7.0'
 pod 'GoogleYandexMobileAdsAdapters', '11.10.0.0'
 pod 'InMobiYandexMobileAdsAdapters', '10.7.8.0'
 pod 'MyTargetYandexMobileAdsAdapters', '5.21.7.3'
