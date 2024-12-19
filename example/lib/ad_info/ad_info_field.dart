@@ -72,7 +72,7 @@ class _AdInfoFieldState extends State<AdInfoField> {
         object.size,
       ),
       elevation: 8.0,
-      color: Theme.of(context).colorScheme.surfaceVariant,
+      color: Theme.of(context).colorScheme.surfaceContainerHighest,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),
       ),
