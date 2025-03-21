@@ -24,7 +24,7 @@ EULA is available at the [EULA website] [LICENSE]
 
 ```yaml
 dependencies:
-  yandex_mobileads: ^7.10.0
+  yandex_mobileads: ^7.11.0
 ```
 
 ### Mediation
