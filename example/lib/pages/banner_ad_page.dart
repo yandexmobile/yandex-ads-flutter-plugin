@@ -106,25 +106,28 @@ class _BannerAdPageState extends State<BannerAdPage> with TextLogger {
 
   BannerAd _createBanner(BannerAdSize adSize) {
     return BannerAd(
-      adUnitId: adUnitId,
-      adSize: adSize,
-      adRequest: adRequest,
-      onAdLoaded: () {
-        setState(() {
-          isLoading = false;
+        adUnitId: adUnitId,
+        adSize: adSize,
+        adRequest: adRequest,
+        onAdLoaded: () {
+          setState(() {
+            isLoading = false;
+          });
+          logMessage('callback: banner ad loaded');
+        },
+        onAdFailedToLoad: (error) {
+          setState(() => isLoading = false);
+          logMessage('callback: banner ad failed to load, '
+              'code: ${error.code}, description: ${error.description}');
+        },
+        onAdClicked: () => logMessage('callback: banner ad clicked'),
+        onLeftApplication: () => logMessage('callback: left app'),
+        onReturnedToApplication: () => logMessage('callback: returned to app'),
+        onImpression: (data) =>
+            logMessage('callback: impression: ${data.getRawData()}'),
+        onAdClose: () {
+          setState(() => isBannerAlreadyCreated = false);
+          logMessage('callback: ad close');
         });
-        logMessage('callback: banner ad loaded');
-      },
-      onAdFailedToLoad: (error) {
-        setState(() => isLoading = false);
-        logMessage('callback: banner ad failed to load, '
-            'code: ${error.code}, description: ${error.description}');
-      },
-      onAdClicked: () => logMessage('callback: banner ad clicked'),
-      onLeftApplication: () => logMessage('callback: left app'),
-      onReturnedToApplication: () => logMessage('callback: returned to app'),
-      onImpression: (data) =>
-          logMessage('callback: impression: ${data.getRawData()}'),
-    );
   }
 }

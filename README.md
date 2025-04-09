@@ -24,7 +24,7 @@ EULA is available at the [EULA website] [LICENSE]
 
 ```yaml
 dependencies:
-  yandex_mobileads: ^7.11.0
+  yandex_mobileads: ^7.12.0
 ```
 
 ### Mediation
@@ -40,7 +40,7 @@ You can use common mediation dependency including all adapters (recommended):
 ```groovy
 dependencies {
     // ...
-    implementation 'com.yandex.android:mobileads-mediation:7.11.0.0'
+    implementation 'com.yandex.android:mobileads-mediation:7.12.0.0'
 }
 ```
 
@@ -49,19 +49,19 @@ Or you can choose adapters manually and include only their dependencies:
 ```groovy
 dependencies {
     // ...
-    implementation 'com.yandex.android:mobileads:7.11.0'
-    implementation 'com.yandex.ads.mediation:mobileads-google:23.5.0.3'
-    implementation 'com.yandex.ads.mediation:mobileads-inmobi:10.8.0.3'
-    implementation 'com.yandex.ads.mediation:mobileads-mytarget:5.22.1.7'
-    implementation 'com.yandex.ads.mediation:mobileads-unityads:4.12.5.3'
-    implementation 'com.yandex.ads.mediation:mobileads-applovin:12.6.0.8'
-    implementation 'com.yandex.ads.mediation:mobileads-ironsource:8.5.0.2'
-    implementation 'com.yandex.ads.mediation:mobileads-chartboost:9.3.1.16'
-    implementation 'com.yandex.ads.mediation:mobileads-pangle:6.5.0.4.0'
-    implementation 'com.yandex.ads.mediation:mobileads-tapjoy:13.4.1.11'
-    implementation 'com.yandex.ads.mediation:mobileads-vungle:7.4.2.3'
-    implementation 'com.yandex.ads.mediation:mobileads-mintegral:16.8.61.5'
-    implementation 'com.yandex.ads.mediation:mobileads-bigoads:5.0.2.3'
+    implementation 'com.yandex.android:mobileads:7.12.0'
+    implementation 'com.yandex.ads.mediation:mobileads-google:23.6.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-inmobi:10.8.2.0'
+    implementation 'com.yandex.ads.mediation:mobileads-mytarget:5.22.1.8'
+    implementation 'com.yandex.ads.mediation:mobileads-unityads:4.14.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-applovin:13.1.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-ironsource:8.7.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-chartboost:9.3.1.17'
+    implementation 'com.yandex.ads.mediation:mobileads-pangle:6.5.0.5.0'
+    implementation 'com.yandex.ads.mediation:mobileads-tapjoy:13.4.1.12'
+    implementation 'com.yandex.ads.mediation:mobileads-vungle:7.4.2.4'
+    implementation 'com.yandex.ads.mediation:mobileads-mintegral:16.9.41.0'
+    implementation 'com.yandex.ads.mediation:mobileads-bigoads:5.0.2.4'
 }
 ```
 
@@ -109,22 +109,22 @@ You can use common mediation dependency including all adapters (recommended):
 `ios/Podfile`:
 
 ```ruby
-pod 'YandexMobileAdsMediation', '~> 7.11.0'
+pod 'YandexMobileAdsMediation', '~> 7.12.0'
 ```
 
 Or you can choose adapters manually and include only their dependencies:
 
 ```ruby
-pod 'YandexMobileAds', '~> 7.11.0'
-pod 'GoogleYandexMobileAdsAdapters', '11.12.0.4'
-pod 'InMobiYandexMobileAdsAdapters', '10.7.8.6'
-pod 'MyTargetYandexMobileAdsAdapters', '5.22.0.4'
-pod 'UnityAdsYandexMobileAdsAdapters', '4.12.4.4'
-pod 'AppLovinYandexMobileAdsAdapters', '13.0.1.4'
-pod 'IronSourceYandexMobileAdsAdapters', '8.5.0.4'
-pod 'MintegralYandexMobileAdsAdapters', '7.7.3.7'
-pod 'ChartboostYandexMobileAdsAdapters', '9.8.0.5'
-pod 'BigoADSYandexMobileAdsAdapters', '4.6.0.3'
+pod 'YandexMobileAds', '~> 7.12.0'
+pod 'GoogleYandexMobileAdsAdapters', '11.12.0.5'
+pod 'InMobiYandexMobileAdsAdapters', '10.7.8.7'
+pod 'MyTargetYandexMobileAdsAdapters', '5.26.0.0'
+pod 'UnityAdsYandexMobileAdsAdapters', '4.12.4.5'
+pod 'AppLovinYandexMobileAdsAdapters', '13.0.1.5'
+pod 'IronSourceYandexMobileAdsAdapters', '8.5.0.5'
+pod 'MintegralYandexMobileAdsAdapters', '7.7.3.8'
+pod 'ChartboostYandexMobileAdsAdapters', '9.8.0.6'
+pod 'BigoADSYandexMobileAdsAdapters', '4.6.0.4'
 ```
 
 If you plan to use AdMob, add the GADApplicationIdentifier key with your AdMob ID
