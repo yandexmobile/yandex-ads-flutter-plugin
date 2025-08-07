@@ -23,6 +23,7 @@ allprojects {
         maven { url "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea" }
         maven { url "https://cboost.jfrog.io/artifactory/chartboost-ads/" }
         maven { url "https://dl.appnext.com/" }
+        maven { url "https://developer.huawei.com/repo/" }
     }
 }
 
