@@ -47,7 +47,7 @@
 	<true/>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-4449457472880521~6005554774</string>
-	<key>SKAdNetworkItems</key>
+    <key>SKAdNetworkItems</key>
     <array>
         <dict>
             <!-- Yandex Ads -->
@@ -55,17 +55,17 @@
             <string>zq492l623r.skadnetwork</string>
         </dict>
         <dict>
-            <!-- AdMob -->
+            <!-- Google (ex-AdMob) -->
             <key>SKAdNetworkIdentifier</key>
             <string>cstr6suwn9.skadnetwork</string>
         </dict>
         <dict>
-            <!-- MyTarget -->
+            <!-- VK Ads (ex-myTarget) -->
             <key>SKAdNetworkIdentifier</key>
             <string>n9x2a789qt.skadnetwork</string>
         </dict>
         <dict>
-            <!-- MyTarget -->
+            <!-- VK Ads (ex-myTarget) -->
             <key>SKAdNetworkIdentifier</key>
             <string>r26jy69rpl.skadnetwork</string>
         </dict>
@@ -73,6 +73,11 @@
             <!-- Start.io -->
             <key>SKAdNetworkIdentifier</key>
             <string>5l3tpt7t6e.skadnetwork</string>
+        </dict>
+        <dict>
+            <!-- Liftoff (ex-Vungle) -->
+            <key>SKAdNetworkIdentifier</key>
+            <string>gta9lk7p23.skadnetwork</string>
         </dict>
         <dict>
             <!-- UnityAds -->
