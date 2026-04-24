@@ -40,7 +40,7 @@ You can use common mediation dependency including all adapters (recommended):
 ```groovy
 dependencies {
     // ...
-    implementation 'com.yandex.android:mobileads-mediation:8.0.0.0-beta.2'
+    implementation 'com.yandex.android:mobileads-mediation:8.0.0.0'
 }
 ```
 
@@ -49,19 +49,19 @@ Or you can choose adapters manually and include only their dependencies:
 ```groovy
 dependencies {
     // ...
-    implementation 'com.yandex.android:mobileads:8.0.0-beta.2'
-    implementation 'com.yandex.ads.mediation:mobileads-google:24.9.0.0-beta.2'
-    implementation 'com.yandex.ads.mediation:mobileads-inmobi:11.0.0.0-beta.2'
-    implementation 'com.yandex.ads.mediation:mobileads-mytarget:5.45.3.1-beta.2'
-    implementation 'com.yandex.ads.mediation:mobileads-unityads:4.16.5.0-beta.2'
-    implementation 'com.yandex.ads.mediation:mobileads-applovin:13.5.1.0-beta.2'
-    implementation 'com.yandex.ads.mediation:mobileads-ironsource:9.2.0.0-beta.2'
-    implementation 'com.yandex.ads.mediation:mobileads-chartboost:9.3.1.28-beta.2'
-    implementation 'com.yandex.ads.mediation:mobileads-pangle:7.8.0.7.0-beta.2'
-    implementation 'com.yandex.ads.mediation:mobileads-tapjoy:14.3.1.9-beta.2'
-    implementation 'com.yandex.ads.mediation:mobileads-vungle:7.7.0.0-beta.2'
-    implementation 'com.yandex.ads.mediation:mobileads-mintegral:17.0.41.0-beta.2'
-    implementation 'com.yandex.ads.mediation:mobileads-bigoads:5.7.0.0-beta.2'
+    implementation 'com.yandex.android:mobileads:8.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-google:24.9.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-inmobi:11.0.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-mytarget:5.45.3.1'
+    implementation 'com.yandex.ads.mediation:mobileads-unityads:4.16.5.0'
+    implementation 'com.yandex.ads.mediation:mobileads-applovin:13.5.1.0'
+    implementation 'com.yandex.ads.mediation:mobileads-ironsource:9.2.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-chartboost:9.3.1.28'
+    implementation 'com.yandex.ads.mediation:mobileads-pangle:7.8.0.7.0'
+    implementation 'com.yandex.ads.mediation:mobileads-tapjoy:14.3.1.9'
+    implementation 'com.yandex.ads.mediation:mobileads-vungle:7.7.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-mintegral:17.0.41.0'
+    implementation 'com.yandex.ads.mediation:mobileads-bigoads:5.7.0.0'
 }
 ```
 
