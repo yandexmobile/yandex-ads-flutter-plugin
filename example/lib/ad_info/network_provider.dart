@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:yandex_mobileads/mobile_ads.dart';
 
 import 'network.dart';
 
@@ -39,13 +38,11 @@ class _AndroidNetworkProvider extends NetworkProvider {
     Network(
       title: 'AdFox',
       adUnitId: 'R-M-243655-8',
-      adRequest: AdRequest(
-        parameters: {
-          'adf_ownerid': '270901',
-          'adf_p1': 'cqtgh',
-          'adf_p2': 'fkbd',
-        },
-      ),
+      parameters: {
+        'adf_ownerid': '270901',
+        'adf_p1': 'cqtgh',
+        'adf_p2': 'fkbd',
+      },
     ),
   ];
 
@@ -68,13 +65,11 @@ class _AndroidNetworkProvider extends NetworkProvider {
     Network(
       title: 'AdFox',
       adUnitId: 'R-M-243655-9',
-      adRequest: AdRequest(
-        parameters: {
-          'adf_ownerid': '270901',
-          'adf_p1': 'cqtgg',
-          'adf_p2': 'fhlx',
-        },
-      ),
+      parameters: {
+        'adf_ownerid': '270901',
+        'adf_p1': 'cqtgg',
+        'adf_p2': 'fhlx',
+      },
     ),
   ];
 
@@ -108,13 +103,11 @@ class _IosNetworkProvider extends NetworkProvider {
     Network(
       title: 'AdFox',
       adUnitId: 'R-M-243655-8',
-      adRequest: AdRequest(
-        parameters: {
-          'adf_ownerid': '270901',
-          'adf_p1': 'cqtgh',
-          'adf_p2': 'fkbd',
-        },
-      ),
+      parameters: {
+        'adf_ownerid': '270901',
+        'adf_p1': 'cqtgh',
+        'adf_p2': 'fkbd',
+      },
     ),
   ];
 
@@ -131,13 +124,11 @@ class _IosNetworkProvider extends NetworkProvider {
     Network(
       title: 'AdFox',
       adUnitId: 'R-M-243655-9',
-      adRequest: AdRequest(
-        parameters: {
-          'adf_ownerid': '270901',
-          'adf_p1': 'cqtgg',
-          'adf_p2': 'fhlx',
-        },
-      ),
+      parameters: {
+        'adf_ownerid': '270901',
+        'adf_p1': 'cqtgg',
+        'adf_p2': 'fhlx',
+      },
     ),
   ];
 

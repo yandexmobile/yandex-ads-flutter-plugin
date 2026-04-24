@@ -29,9 +29,8 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
 
   late var adUnitId = networks.first.adUnitId;
   RewardedAd? _ad;
-  late final Future<RewardedAdLoader> _adLoader = _createRewardedAdLoader();
-  var adRequest = const AdRequest();
-  late var _adRequestConfiguration = AdRequestConfiguration(adUnitId: adUnitId);
+  final _adLoader = RewardedAdLoader();
+  Map<String, String>? _parameters;
   var isLoading = false;
 
   @override
@@ -46,12 +45,11 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
             Widgets.verticalSpace,
             AdInfoField(
               networks: networks,
-              onChanged: (id, request) => setState(() {
+              onChanged: (network) => setState(() {
                 isLoading = false;
                 _ad = null;
-                adUnitId = id;
-                adRequest = request;
-                _updateAdRequestConfiguration(id, request);
+                adUnitId = network.adUnitId;
+                _parameters = network.parameters;
               }),
             ),
             Widgets.verticalSpace,
@@ -79,31 +77,29 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
     }
   }
 
-  Future<RewardedAdLoader> _createRewardedAdLoader() {
-    return RewardedAdLoader.create(
-      onAdLoaded: (RewardedAd rewardedAd) {
-        setState(() {
-          _ad = rewardedAd;
-          isLoading = false;
-        });
-        logMessage('callback: rewarded ad loaded');
-      },
-      onAdFailedToLoad: (error) {
-        setState(() {
-          _ad = null;
-          isLoading = false;
-        });
-        logMessage('callback: rewarded ad failed to load, '
-            'code: ${error.code}, description: ${error.description}');
-      },
-    );
-  }
-
   Future<void> _loadRewardedAd() async {
-    final adLoader = await _adLoader;
     setState(() => isLoading = true);
-    await adLoader.loadAd(adRequestConfiguration: _adRequestConfiguration);
     logMessage('async: load rewarded ad');
+    try {
+      final ad = await _adLoader.loadAd(
+        adRequest: AdRequest(
+          adUnitId: adUnitId,
+          parameters: _parameters,
+        ),
+      );
+      setState(() {
+        _ad = ad;
+        isLoading = false;
+      });
+      logMessage('callback: rewarded ad loaded');
+    } on AdRequestError catch (e) {
+      setState(() {
+        _ad = null;
+        isLoading = false;
+      });
+      logMessage('callback: rewarded ad failed to load, '
+          'code: ${e.code}, description: ${e.description}');
+    }
   }
 
   Future<void> _showRewardedAd() async {
@@ -131,17 +127,5 @@ class _RewardedAdPageState extends State<RewardedAdPage> with TextLogger {
                 "callback: rewarded ad impression: ${data.getRawData()}"),
             onRewarded: (Reward reward) => logMessage(
                 'callback: reward: ${reward.amount} of ${reward.type}')));
-  }
-
-  void _updateAdRequestConfiguration(String adUnitId, AdRequest configuration) {
-    _adRequestConfiguration = AdRequestConfiguration(
-        adUnitId: adUnitId,
-        age: configuration.age,
-        contextQuery: configuration.contextQuery,
-        contextTags: configuration.contextTags,
-        gender: configuration.gender,
-        location: configuration.location,
-        parameters: configuration.parameters,
-        preferredTheme: configuration.preferredTheme);
   }
 }
