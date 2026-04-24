@@ -7,6 +7,8 @@
  * You may obtain a copy of the License at https://legal.yandex.com/partner_ch/
  */
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:yandex_mobileads/mobile_ads.dart';
 import 'package:yandex_mobileads_sample/ad_info/load_button.dart';
@@ -35,11 +37,20 @@ class _BannerAdPageState extends State<BannerAdPage> with TextLogger {
   final networks = NetworkProvider.instance.bannerNetworks;
 
   late var adUnitId = networks.first.adUnitId;
-  var adRequest = const AdRequest();
+  Map<String, String>? _parameters;
   var isLoading = false;
-  var isBannerAlreadyCreated = false;
 
-  late BannerAd banner;
+  BannerAd? _banner;
+  StreamSubscription<BannerAdLoadState>? _loadStateSubscription;
+  StreamSubscription<BannerAdEvent>? _eventsSubscription;
+
+  @override
+  void dispose() {
+    _loadStateSubscription?.cancel();
+    _eventsSubscription?.cancel();
+    _banner?.destroy();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,11 +64,14 @@ class _BannerAdPageState extends State<BannerAdPage> with TextLogger {
             Widgets.verticalSpace,
             AdInfoField(
               networks: networks,
-              onChanged: (id, request) => setState(() {
+              onChanged: (network) => setState(() {
                 isLoading = false;
-                adUnitId = id;
-                adRequest = request;
-                isBannerAlreadyCreated = false;
+                adUnitId = network.adUnitId;
+                _parameters = network.parameters;
+                _loadStateSubscription?.cancel();
+                _eventsSubscription?.cancel();
+                _banner?.destroy();
+                _banner = null;
               }),
             ),
             Widgets.verticalSpace,
@@ -73,8 +87,7 @@ class _BannerAdPageState extends State<BannerAdPage> with TextLogger {
             SafeArea(
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child:
-                    isBannerAlreadyCreated ? AdWidget(bannerAd: banner) : null,
+                child: _banner != null ? AdWidget(bannerAd: _banner!) : null,
               ),
             ),
           ],
@@ -83,12 +96,18 @@ class _BannerAdPageState extends State<BannerAdPage> with TextLogger {
     );
   }
 
+  AdRequest _createAdRequest() {
+    return AdRequest(
+      adUnitId: adUnitId,
+      parameters: _parameters,
+    );
+  }
+
   Future<void> _loadBanner() async {
     final windowSize = MediaQuery.of(context).size;
     setState(() => isLoading = true);
-    if (isBannerAlreadyCreated) {
-      banner.loadAd(adRequest: adRequest);
-    } else {
+
+    if (_banner == null) {
       final adSize = widget.isSticky
           ? BannerAdSize.sticky(width: windowSize.width.toInt())
           : BannerAdSize.inline(
@@ -97,37 +116,43 @@ class _BannerAdPageState extends State<BannerAdPage> with TextLogger {
             );
       var calculatedBannerSize = await adSize.getCalculatedBannerAdSize();
       logMessage('calculatedBannerSize: ${calculatedBannerSize.toString()}');
-      banner = _createBanner(adSize);
+
+      final banner = BannerAd(adSize: adSize);
+      _subscribeToBanner(banner);
       setState(() {
-        isBannerAlreadyCreated = true;
+        _banner = banner;
       });
     }
+
+    _banner!.load(_createAdRequest());
   }
 
-  BannerAd _createBanner(BannerAdSize adSize) {
-    return BannerAd(
-        adUnitId: adUnitId,
-        adSize: adSize,
-        adRequest: adRequest,
-        onAdLoaded: () {
-          setState(() {
-            isLoading = false;
-          });
-          logMessage('callback: banner ad loaded');
-        },
-        onAdFailedToLoad: (error) {
-          setState(() => isLoading = false);
-          logMessage('callback: banner ad failed to load, '
-              'code: ${error.code}, description: ${error.description}');
-        },
-        onAdClicked: () => logMessage('callback: banner ad clicked'),
-        onLeftApplication: () => logMessage('callback: left app'),
-        onReturnedToApplication: () => logMessage('callback: returned to app'),
-        onImpression: (data) =>
-            logMessage('callback: impression: ${data.getRawData()}'),
-        onAdClose: () {
-          setState(() => isBannerAlreadyCreated = false);
-          logMessage('callback: ad close');
-        });
+  void _subscribeToBanner(BannerAd banner) {
+    _loadStateSubscription?.cancel();
+    _eventsSubscription?.cancel();
+
+    _loadStateSubscription = banner.loadStateStream.listen((state) {
+      if (state is BannerAdLoadStateLoaded) {
+        setState(() => isLoading = false);
+        logMessage('callback: banner ad loaded '
+            '(${state.width}x${state.height})');
+      } else if (state is BannerAdLoadStateError) {
+        setState(() => isLoading = false);
+        logMessage('callback: banner ad failed to load, '
+            'code: ${state.error.code}, '
+            'description: ${state.error.description}');
+      } else if (state is BannerAdLoadStateLoading) {
+        logMessage('callback: banner ad loading');
+      }
+    });
+
+    _eventsSubscription = banner.events.listen((event) {
+      if (event is BannerAdClickedEvent) {
+        logMessage('callback: banner ad clicked');
+      } else if (event is BannerAdImpressionEvent) {
+        logMessage(
+            'callback: impression: ${event.impressionData.getRawData()}');
+      }
+    });
   }
 }

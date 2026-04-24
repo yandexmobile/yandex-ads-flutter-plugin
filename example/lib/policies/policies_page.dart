@@ -23,7 +23,7 @@ class _PoliciesPageState extends State<PoliciesPage> {
           children: [
             ListTile(
               leading: const Icon(Icons.handshake_outlined),
-              title: MobileAds.userConsent
+              title: YandexAds.userConsent
                   ? const Text('User consent enabled')
                   : const Text('User consent disabled'),
               trailing: ElevatedButton(
@@ -33,14 +33,14 @@ class _PoliciesPageState extends State<PoliciesPage> {
                     context: context,
                     builder: (context) => const GdprDialog(),
                   );
-                  MobileAds.setUserConsent(result);
+                  YandexAds.setUserConsent(result);
                   setState(() {});
                 },
               ),
             ),
             ListTile(
               leading: const Icon(Icons.place_outlined),
-              title: MobileAds.locationConsent
+              title: YandexAds.locationTracking
                   ? const Text('Location consent enabled')
                   : const Text('Location consent disabled'),
               trailing: ElevatedButton(
@@ -50,14 +50,14 @@ class _PoliciesPageState extends State<PoliciesPage> {
                     context: context,
                     builder: (context) => const LocationDialog(),
                   );
-                  MobileAds.setLocationConsent(result);
+                  YandexAds.setLocationTracking(result);
                   setState(() {});
                 },
               ),
             ),
             ListTile(
               leading: const Icon(Icons.child_care_outlined),
-              title: MobileAds.ageRestrictedUser
+              title: YandexAds.ageRestricted
                   ? const Text('User is age restricted')
                   : const Text('User is not age restricted'),
               trailing: ElevatedButton(
@@ -67,7 +67,7 @@ class _PoliciesPageState extends State<PoliciesPage> {
                     context: context,
                     builder: (context) => const CoppaDialog(),
                   );
-                  MobileAds.setAgeRestrictedUser(result);
+                  YandexAds.setAgeRestricted(result);
                   setState(() {});
                 },
               ),

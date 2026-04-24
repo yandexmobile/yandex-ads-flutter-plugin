@@ -8,13 +8,12 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:yandex_mobileads/mobile_ads.dart';
 
 import 'network.dart';
 
 class AdInfoField extends StatefulWidget {
   final List<Network> networks;
-  final void Function(String adUnitId, AdRequest adRequest)? onChanged;
+  final void Function(Network network)? onChanged;
 
   const AdInfoField({
     super.key,
@@ -27,7 +26,6 @@ class AdInfoField extends StatefulWidget {
 }
 
 class _AdInfoFieldState extends State<AdInfoField> {
-  var adRequest = const AdRequest();
   var menuOpened = false;
 
   late TextEditingController controller;
@@ -85,7 +83,7 @@ class _AdInfoFieldState extends State<AdInfoField> {
     );
     if (result != null) {
       controller.text = result.title;
-      widget.onChanged?.call(result.adUnitId, result.adRequest);
+      widget.onChanged?.call(result);
     }
     setState(() => menuOpened = false);
   }

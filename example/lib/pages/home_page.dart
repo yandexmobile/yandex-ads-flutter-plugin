@@ -65,7 +65,7 @@ class HomePage extends StatelessWidget {
             leading: const Icon(Icons.home_repair_service_outlined),
             title: const Text('Debug Panel'),
             trailing: const Icon(Icons.chevron_right),
-            onTap: () => MobileAds.showDebugPanel(),
+            onTap: () => YandexAds.showDebugPanel(),
           )
         ],
       ),

@@ -1,6 +1,6 @@
 # Mobile Ads Flutter Plugin
 
-Flutter plugin for the Yandex Mobile Ads SDK. The plugin allows Flutter developers to integrate the Yandex Mobile Ads SDK into Android and iOS apps.
+Flutter plugin for the Yandex Ads SDK. The plugin allows Flutter developers to integrate the Yandex Ads SDK into Android and iOS apps.
 
 ## Documentation
 
@@ -24,7 +24,7 @@ EULA is available at the [EULA website] [LICENSE]
 
 ```yaml
 dependencies:
-  yandex_mobileads: ^7.18.0
+  yandex_mobileads: ^8.0.0
 ```
 
 ### Mediation
@@ -40,7 +40,7 @@ You can use common mediation dependency including all adapters (recommended):
 ```groovy
 dependencies {
     // ...
-    implementation 'com.yandex.android:mobileads-mediation:7.18.0.0'
+    implementation 'com.yandex.android:mobileads-mediation:8.0.0.0'
 }
 ```
 
@@ -49,19 +49,19 @@ Or you can choose adapters manually and include only their dependencies:
 ```groovy
 dependencies {
     // ...
-    implementation 'com.yandex.android:mobileads:7.18.0'
-    implementation 'com.yandex.ads.mediation:mobileads-google:23.6.0.10'
-    implementation 'com.yandex.ads.mediation:mobileads-inmobi:10.8.7.2'
-    implementation 'com.yandex.ads.mediation:mobileads-mytarget:5.27.4.0'
-    implementation 'com.yandex.ads.mediation:mobileads-unityads:4.16.4.0'
-    implementation 'com.yandex.ads.mediation:mobileads-applovin:13.1.0.11'
-    implementation 'com.yandex.ads.mediation:mobileads-ironsource:9.0.0.0'
-    implementation 'com.yandex.ads.mediation:mobileads-chartboost:9.3.1.27'
-    implementation 'com.yandex.ads.mediation:mobileads-pangle:6.5.1.2.2'
-    implementation 'com.yandex.ads.mediation:mobileads-tapjoy:14.3.1.8'
-    implementation 'com.yandex.ads.mediation:mobileads-vungle:7.6.1.0'
-    implementation 'com.yandex.ads.mediation:mobileads-mintegral:17.0.31.0'
-    implementation 'com.yandex.ads.mediation:mobileads-bigoads:5.5.1.2'
+    implementation 'com.yandex.android:mobileads:8.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-google:24.9.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-inmobi:11.0.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-mytarget:5.45.3.1'
+    implementation 'com.yandex.ads.mediation:mobileads-unityads:4.16.5.0'
+    implementation 'com.yandex.ads.mediation:mobileads-applovin:13.5.1.0'
+    implementation 'com.yandex.ads.mediation:mobileads-ironsource:9.2.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-chartboost:9.3.1.28'
+    implementation 'com.yandex.ads.mediation:mobileads-pangle:7.8.0.7.0'
+    implementation 'com.yandex.ads.mediation:mobileads-tapjoy:14.3.1.9'
+    implementation 'com.yandex.ads.mediation:mobileads-vungle:7.7.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-mintegral:17.0.41.0'
+    implementation 'com.yandex.ads.mediation:mobileads-bigoads:5.7.0.0'
 }
 ```
 
@@ -111,22 +111,22 @@ You can use common mediation dependency including all adapters (recommended):
 `ios/Podfile`:
 
 ```ruby
-pod 'YandexMobileAdsMediation', '~> 7.18.0'
+pod 'YandexMobileAdsMediation', '~> 8.0.0'
 ```
 
 Or you can choose adapters manually and include only their dependencies:
 
 ```ruby
-pod 'YandexMobileAds', '~> 7.18.0'
-pod 'GoogleYandexMobileAdsAdapters', '12.2.0.8'
+pod 'YandexMobileAds', '~> 8.0.0'
+pod 'GoogleYandexMobileAdsAdapters', '12.14.0.0'
 pod 'InMobiYandexMobileAdsAdapters', '10.7.8.6'
-pod 'MyTargetYandexMobileAdsAdapters', '5.28.0.8'
-pod 'UnityAdsYandexMobileAdsAdapters', '4.16.1.3'
-pod 'AppLovinYandexMobileAdsAdapters', '13.3.1.3'
-pod 'IronSourceYandexMobileAdsAdapters', '8.11.0.2'
-pod 'MintegralYandexMobileAdsAdapters', '7.7.9.3'
-pod 'ChartboostYandexMobileAdsAdapters', '9.9.2.3'
-pod 'BigoADSYandexMobileAdsAdapters', '4.6.0.13'
+pod 'MyTargetYandexMobileAdsAdapters', '5.36.2.0'
+pod 'UnityAdsYandexMobileAdsAdapters', '4.16.6.0'
+pod 'AppLovinYandexMobileAdsAdapters', '13.5.1.0'
+pod 'IronSourceYandexMobileAdsAdapters', '9.3.0.0'
+pod 'MintegralYandexMobileAdsAdapters', '8.0.7.0'
+pod 'ChartboostYandexMobileAdsAdapters', '9.11.0.0'
+pod 'BigoADSYandexMobileAdsAdapters', '5.0.6.0'
 ```
 
 If you plan to use AdMob, add the GADApplicationIdentifier key with your AdMob ID

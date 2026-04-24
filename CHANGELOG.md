@@ -1,5 +1,33 @@
 # Change Log
 
+## Version 8.0.0
+
+[Full migration guideline](https://ads.yandex.com/helpcenter/en/dev/flutter/release/8-0-0-migration)
+
+### Breaking changes
+
+* `MobileAds` renamed to `YandexAds`
+* `AdRequestConfiguration` removed — use `AdRequest(adUnitId:)` instead
+* `AdRequest` targeting fields (`age`, `gender`, `location`, `contextQuery`, `contextTags`) removed — use `AdTargeting`
+* `InterstitialAdLoader.create()`, `RewardedAdLoader.create()`, `AppOpenAdLoader.create()` replaced with synchronous constructors
+* `loadAd` for fullscreen ads now returns `Future<Ad>` instead of delivering results via callbacks
+* `InterstitialAdLoadListener`, `RewardedAdLoadListener`, `AppOpenAdLoadListener` removed
+* `BannerAd` constructor no longer accepts `adRequest` or callbacks — use `load(AdRequest)` and subscribe to `loadStateStream` / `events` streams
+* `AdInfo.adSize` removed — use `AdInfo.creatives`, `AdInfo.extraData`, `AdInfo.partnerText`
+* `onLeftApplication`, `onReturnedToApplication`, `onAdClose` callbacks removed
+* `MobileAds.setLocationConsent` renamed to `YandexAds.setLocationTracking`
+* `MobileAds.setAgeRestrictedUser` renamed to `YandexAds.setAgeRestricted`
+
+### Added
+
+* `AdTargeting` class for targeting parameters
+* `BannerAdLoadState` and `BannerAdEvent` class hierarchies for stream-based banner state
+* Stream-based API for banner ads (`loadStateStream`, `events`)
+
+#### Updated
+* Supported Android Yandex Mobile Ads version 8.0.0
+* Supported iOS Yandex Mobile Ads version 8.0.0
+
 ## Version 7.18.0
 * Supported Android Yandex Mobile Ads version 7.18.0
 * Supported iOS Yandex Mobile Ads version 7.18.0

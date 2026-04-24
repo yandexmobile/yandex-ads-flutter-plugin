@@ -12,11 +12,8 @@ import 'package:yandex_mobileads/mobile_ads.dart';
 class AppOpenAdManager {
   final _adUnitId = 'demo-appopenad-yandex';
   var _loadingInProgress = false;
-  late final _adRequestConfiguration =
-      AdRequestConfiguration(adUnitId: _adUnitId);
+  final _adLoader = AppOpenAdLoader();
   AppOpenAd? _appOpenAd;
-  late final Future<AppOpenAdLoader> _appOpenAdLoader =
-      _createAppOpenAdLoader();
 
   static var isAdShowing = false;
 
@@ -26,8 +23,15 @@ class AppOpenAdManager {
     // load new Ad if there is no loaded Ad and new ad isn't loading
     if (_loadingInProgress == false) {
       _loadingInProgress = true;
-      final adLoader = await _appOpenAdLoader;
-      adLoader.loadAd(adRequestConfiguration: _adRequestConfiguration);
+      try {
+        final ad = await _adLoader.loadAd(
+          adRequest: AdRequest(adUnitId: _adUnitId),
+        );
+        _appOpenAd = ad;
+        _loadingInProgress = false;
+      } on AdRequestError catch (_) {
+        _loadingInProgress = false;
+      }
     }
   }
 
@@ -64,17 +68,5 @@ class AppOpenAdManager {
     }, onAdImpression: (data) {
       // Called when an impression was observed
     }));
-  }
-
-  Future<AppOpenAdLoader> _createAppOpenAdLoader() {
-    return AppOpenAdLoader.create(
-      onAdLoaded: (AppOpenAd appOpenAd) {
-        _appOpenAd = appOpenAd;
-        _loadingInProgress = false;
-      },
-      onAdFailedToLoad: (error) {
-        _loadingInProgress = false;
-      },
-    );
   }
 }

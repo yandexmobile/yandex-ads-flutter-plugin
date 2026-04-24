@@ -7,16 +7,14 @@
  * You may obtain a copy of the License at https://legal.yandex.com/partner_ch/
  */
 
-import 'package:yandex_mobileads/mobile_ads.dart';
-
 class Network {
   final String title;
   final String adUnitId;
-  final AdRequest adRequest;
+  final Map<String, String>? parameters;
 
   const Network({
     required this.title,
     required this.adUnitId,
-    this.adRequest = const AdRequest(),
+    this.parameters,
   });
 }
