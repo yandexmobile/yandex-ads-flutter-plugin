@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 8.1.0
+* Supported Android Yandex Mobile Ads version 8.1.0
+* Supported iOS Yandex Mobile Ads version 8.1.0
+
 ## Version 8.0.0
 
 [Full migration guideline](https://ads.yandex.com/helpcenter/en/dev/flutter/release/8-0-0-migration)
