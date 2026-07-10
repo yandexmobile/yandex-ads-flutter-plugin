@@ -65,6 +65,8 @@ app.*.map.json
 
 settings.local.json
 ### AI agents ###
-.claude/
+.claude/*
+!.claude/settings.json
+.agents/
 .opencode/
 opencode.json

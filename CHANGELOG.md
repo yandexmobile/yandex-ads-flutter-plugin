@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 8.2.0
+* Supported Android Yandex Mobile Ads version 8.2.0
+* Supported iOS Yandex Mobile Ads version 8.2.1
+
 ## Version 8.1.0
 * Supported Android Yandex Mobile Ads version 8.1.0
 * Supported iOS Yandex Mobile Ads version 8.1.0
