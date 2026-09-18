@@ -54,7 +54,7 @@ flutter {
 }
 
 dependencies {
-    implementation 'com.yandex.android:mobileads-mediation:8.4.0.0'
-    implementation 'com.yandex.ads.mediation:mobileads-appnext:2.7.6.473.24'
-    implementation 'com.yandex.ads.mediation:mobileads-tapjoy:14.3.1.13'
+    implementation 'com.yandex.android:mobileads-mediation:8.5.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-appnext:2.7.6.473.25'
+    implementation 'com.yandex.ads.mediation:mobileads-tapjoy:14.8.0.0'
 }
