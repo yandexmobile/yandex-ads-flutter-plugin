@@ -12,6 +12,10 @@
 .swiftpm/
 migrate_working_dir/
 
+# Лок перегенерируется на каждый бамп медиации и только шумит в ревью. Так же
+# устроены примеры в flutter/packages и googleads-mobile-flutter.
+ios/**/xcshareddata/swiftpm/Package.resolved
+
 # IntelliJ related
 *.iml
 *.ipr

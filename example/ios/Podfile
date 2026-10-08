@@ -34,7 +34,6 @@ target 'Runner' do
   use_modular_headers!
 
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-  pod 'YandexMobileAdsMediation', '~> 8.5.0'
 
 end
 
