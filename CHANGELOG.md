@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 8.6.0
+* Supported Android Yandex Mobile Ads version 8.6.0
+* Supported iOS Yandex Mobile Ads version 8.6.0
+* Added Swift Package Manager support for iOS
+
 ## Version 8.5.0
 * Supported Android Yandex Mobile Ads version 8.5.0
 * Supported iOS Yandex Mobile Ads version 8.5.0
