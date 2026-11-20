@@ -24,6 +24,8 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+        // Google Play Billing 9.2.0+, pulled in by the myTarget adapter, requires it
+        coreLibraryDesugaringEnabled true
     }
 
     kotlinOptions {
@@ -54,7 +56,8 @@ flutter {
 }
 
 dependencies {
-    implementation 'com.yandex.android:mobileads-mediation:8.6.0.0'
-    implementation 'com.yandex.ads.mediation:mobileads-appnext:2.7.6.473.26'
-    implementation 'com.yandex.ads.mediation:mobileads-tapjoy:14.8.0.1'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+    implementation 'com.yandex.android:mobileads-mediation:8.7.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-appnext:2.7.6.473.27'
+    implementation 'com.yandex.ads.mediation:mobileads-tapjoy:14.8.0.2'
 }
