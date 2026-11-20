@@ -1,5 +1,22 @@
 # Change Log
 
+## Version 8.7.0
+
+#### Changed
+
+* The Android Yandex Mobile Ads SDK is now published to the `https://ads.maven.yandex.net/` Maven repository; the plugin adds it to the app's repositories automatically
+
+#### Updated
+
+* Supported Android Yandex Mobile Ads version 8.7.0
+* Supported iOS Yandex Mobile Ads version 8.7.0
+
+#### Fixed
+
+* Fixed banner cleanup when destroyed before creation or removed from the widget tree
+* Fixed repeated cleanup of fullscreen ads and event cancellation when destroying their loaders
+* Fixed an iOS issue that prevented scrolling a list when swiping on a banner ad
+
 ## Version 8.6.0
 * Supported Android Yandex Mobile Ads version 8.6.0
 * Supported iOS Yandex Mobile Ads version 8.6.0

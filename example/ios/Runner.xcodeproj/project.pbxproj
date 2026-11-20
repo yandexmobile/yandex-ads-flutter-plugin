@@ -560,7 +560,7 @@
 			repositoryURL = "https://github.com/yandexmobile/yandex-ads-sdk-mediation-ios";
 			requirement = {
 				kind = upToNextMinorVersion;
-				minimumVersion = 8.6.0;
+				minimumVersion = 8.7.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

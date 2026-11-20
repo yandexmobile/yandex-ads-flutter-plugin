@@ -66,7 +66,13 @@ class HomePage extends StatelessWidget {
             title: const Text('Debug Panel'),
             trailing: const Icon(Icons.chevron_right),
             onTap: () => YandexAds.showDebugPanel(),
-          )
+          ),
+          ListTile(
+            leading: const Icon(Icons.volume_up_outlined),
+            title: const Text('Ad audio'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => Navigator.pushNamed(context, '/ad_audio'),
+          ),
         ],
       ),
     );

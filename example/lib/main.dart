@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:yandex_mobileads_sample/pages/app_open_ad_page.dart';
 import 'package:yandex_mobileads_sample/policies/policies_page.dart';
 
+import 'pages/ad_audio_page.dart';
 import 'pages/banner_ad_page.dart';
 import 'pages/home_page.dart';
 import 'pages/interstitial_ad_page.dart';
@@ -63,6 +64,7 @@ class YandexMobileAdsApp extends StatelessWidget {
         '/interstitial': (context) => const InterstitialAdPage(),
         '/rewarded': (context) => const RewardedAdPage(),
         '/policies': (context) => const PoliciesPage(),
+        '/ad_audio': (context) => const AdAudioPage(),
       },
     );
   }

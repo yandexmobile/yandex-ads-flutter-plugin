@@ -24,7 +24,7 @@ EULA is available at the [EULA website] [LICENSE]
 
 ```yaml
 dependencies:
-  yandex_mobileads: ^8.6.0
+  yandex_mobileads: ^8.7.0
 ```
 
 ### Mediation
@@ -40,7 +40,7 @@ You can use common mediation dependency including all adapters (recommended):
 ```groovy
 dependencies {
     // ...
-    implementation 'com.yandex.android:mobileads-mediation:8.6.0.0'
+    implementation 'com.yandex.android:mobileads-mediation:8.7.0.0'
 }
 ```
 
@@ -49,19 +49,19 @@ Or you can choose adapters manually and include only their dependencies:
 ```groovy
 dependencies {
     // ...
-    implementation 'com.yandex.android:mobileads:8.6.0'
-    implementation 'com.yandex.ads.mediation:mobileads-google-nextgen:1.3.1.0'
-    implementation 'com.yandex.ads.mediation:mobileads-inmobi:11.4.1.1'
-    implementation 'com.yandex.ads.mediation:mobileads-mytarget:5.51.2.2'
-    implementation 'com.yandex.ads.mediation:mobileads-unityads:4.20.0.1'
-    implementation 'com.yandex.ads.mediation:mobileads-applovin:13.6.3.3'
-    implementation 'com.yandex.ads.mediation:mobileads-ironsource:9.6.0.1'
-    implementation 'com.yandex.ads.mediation:mobileads-chartboost:9.14.0.1'
-    implementation 'com.yandex.ads.mediation:mobileads-pangle:8.3.0.3.0'
-    implementation 'com.yandex.ads.mediation:mobileads-tapjoy:14.8.0.1'
-    implementation 'com.yandex.ads.mediation:mobileads-vungle:7.7.8.1'
-    implementation 'com.yandex.ads.mediation:mobileads-mintegral:17.1.81.1'
-    implementation 'com.yandex.ads.mediation:mobileads-bigoads:6.1.0.0'
+    implementation 'com.yandex.android:mobileads:8.7.0'
+    implementation 'com.yandex.ads.mediation:mobileads-google-nextgen:1.6.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-inmobi:11.4.1.2'
+    implementation 'com.yandex.ads.mediation:mobileads-mytarget:5.51.2.3'
+    implementation 'com.yandex.ads.mediation:mobileads-unityads:4.20.0.2'
+    implementation 'com.yandex.ads.mediation:mobileads-applovin:13.6.4.0'
+    implementation 'com.yandex.ads.mediation:mobileads-ironsource:9.7.0.0'
+    implementation 'com.yandex.ads.mediation:mobileads-chartboost:9.14.1.0'
+    implementation 'com.yandex.ads.mediation:mobileads-pangle:8.3.0.4.0'
+    implementation 'com.yandex.ads.mediation:mobileads-tapjoy:14.8.0.2'
+    implementation 'com.yandex.ads.mediation:mobileads-vungle:7.7.9.0'
+    implementation 'com.yandex.ads.mediation:mobileads-mintegral:17.1.81.2'
+    implementation 'com.yandex.ads.mediation:mobileads-bigoads:6.2.0.0'
 }
 ```
 
@@ -98,8 +98,6 @@ allprojects {
         maven { url "https://cboost.jfrog.io/artifactory/chartboost-ads/" }
         // AppNext
         maven { url "https://dl.appnext.com/" }
-        // PetalAds
-        maven { url "https://developer.huawei.com/repo/" }
     }
 }
 ```
@@ -146,22 +144,22 @@ You can use common mediation dependency including all adapters (recommended):
 `ios/Podfile`:
 
 ```ruby
-pod 'YandexMobileAdsMediation', '~> 8.6.0'
+pod 'YandexMobileAdsMediation', '~> 8.7.0'
 ```
 
 Or you can choose adapters manually and include only their dependencies:
 
 ```ruby
-pod 'YandexMobileAds', '~> 8.6.0'
-pod 'GoogleYandexMobileAdsAdapters', '13.8.0.1'
+pod 'YandexMobileAds', '~> 8.7.0'
+pod 'GoogleYandexMobileAdsAdapters', '13.11.0.0'
 pod 'InMobiYandexMobileAdsAdapters', '10.7.8.6'
-pod 'MyTargetYandexMobileAdsAdapters', '5.45.0.0'
-pod 'UnityAdsYandexMobileAdsAdapters', '4.20.0.1'
-pod 'AppLovinYandexMobileAdsAdapters', '13.6.4.1'
-pod 'IronSourceYandexMobileAdsAdapters', '9.3.0.6'
-pod 'MintegralYandexMobileAdsAdapters', '8.0.7.6'
-pod 'ChartboostYandexMobileAdsAdapters', '9.13.0.2'
-pod 'BigoADSYandexMobileAdsAdapters', '5.0.6.6'
+pod 'MyTargetYandexMobileAdsAdapters', '5.46.0.0'
+pod 'UnityAdsYandexMobileAdsAdapters', '4.21.0.0'
+pod 'AppLovinYandexMobileAdsAdapters', '13.6.4.2'
+pod 'IronSourceYandexMobileAdsAdapters', '9.7.0.0'
+pod 'MintegralYandexMobileAdsAdapters', '8.1.7.0'
+pod 'ChartboostYandexMobileAdsAdapters', '9.14.2.0'
+pod 'BigoADSYandexMobileAdsAdapters', '6.1.0.0'
 ```
 
 If you plan to use AdMob, add the GADApplicationIdentifier key with your AdMob ID
